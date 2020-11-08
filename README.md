@@ -1,16 +1,25 @@
-# assignment
+# Assignment
 
-A new Flutter project.
+Demo Apk can be downloaded from [here](https://drive.google.com/drive/folders/1VOl6ynpRXI2zKBTwAZnYtKFUR9qJRW3r?usp=sharing)
 
-## Getting Started
+#### Firebase Auth
+  `Google Signin with Firebase Auth`
+  
+![1](demo/demo1.gif)
 
-This project is a starting point for a Flutter application.
+ 
+ 
+<br><br>
+#### Volume Control 
+ ` Swipe up and down to control volume`
+ 
+![1](demo/demo2.gif)
 
-A few resources to get you started if this is your first Flutter project:
+  `
+<br><br>
+#### Camera Feed
+ ` long Press on camera feed box and drag to another position`
+ 
+![1](demo/demo3.gif)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ 
