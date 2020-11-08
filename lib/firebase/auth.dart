@@ -8,31 +8,35 @@ String currentUserId;
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-Future<String> googleSignIn(BuildContext context) async {
-  final GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
-  final GoogleSignInAuthentication googleSignInAuthentication =
-      await googleSignInAccount.authentication;
-  final AuthCredential credential = GoogleAuthProvider.credential(
-    accessToken: googleSignInAuthentication.accessToken,
-    idToken: googleSignInAuthentication.idToken,
-  );
+Future<bool> googleSignIn(BuildContext context) async {
+  try {
+    final GoogleSignInAccount googleSignInAccount =
+        await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
 
-  final UserCredential authResult =
-      await _auth.signInWithCredential(credential);
-  final User user = authResult.user;
+    final UserCredential authResult =
+        await _auth.signInWithCredential(credential);
+    final User user = authResult.user;
 
-  assert(!user.isAnonymous);
-  assert(await user.getIdToken() != null);
+    assert(!user.isAnonymous);
+    assert(await user.getIdToken() != null);
 
-  final User currentUser = _auth.currentUser;
-  assert(user.uid == currentUser.uid);
-  currentUserName = user.displayName;
-  currentUserImgUrl = user.photoURL;
-  currentUserId = currentUser.uid;
-  print(
-      "Name:${user.displayName} Email:${user.email} Phone:${user.phoneNumber}");
-
-  return 'signInWithGoogle succeeded: $user';
+    final User currentUser = _auth.currentUser;
+    assert(user.uid == currentUser.uid);
+    currentUserName = user.displayName;
+    currentUserImgUrl = user.photoURL;
+    currentUserId = currentUser.uid;
+    print(
+        "Name:${user.displayName} Email:${user.email} Phone:${user.phoneNumber}");
+    return true;
+  } catch (e) {
+    return false;
+  }
 }
 
 bool isLoggedin() {
